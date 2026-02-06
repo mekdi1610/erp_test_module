@@ -72,10 +72,10 @@ composer install
 
 2. Edit `.env` and set at minimum:
 
-   - **Base URL**:
+   - **Base URL** (required for production): Set this to your real site URL so redirects and links use the correct host. For local dev use `http://localhost:8080/`.
 
      ```ini
-     app.baseURL = 'http://localhost:8080/'
+     app.baseURL = 'https://yourdomain.com/'
      ```
 
    - **Database** (example for MySQL):

@@ -12,11 +12,20 @@ class App extends BaseConfig
      * --------------------------------------------------------------------------
      *
      * URL to your CodeIgniter root. Typically, this will be your base URL,
-     * WITH a trailing slash:
+     * WITH a trailing slash. Set app.baseURL in .env for production.
      *
      * E.g., http://example.com/
      */
     public string $baseURL = 'http://localhost:8080/';
+
+    public function __construct()
+    {
+        parent::__construct();
+        $fromEnv = env('app.baseURL') ?: env('app_baseURL');
+        if ($fromEnv !== null && $fromEnv !== false && $fromEnv !== '') {
+            $this->baseURL = rtrim($fromEnv, '/') . '/';
+        }
+    }
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
